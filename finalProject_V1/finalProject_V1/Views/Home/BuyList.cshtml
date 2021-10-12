@@ -1,0 +1,98 @@
+﻿@model IEnumerable<finalProject_V1.Models.tOrder>
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "BuyList";
+    Layout = "~/Views/Shared/_HomeLayoutPage.cshtml";
+}
+
+<h2>BuyList</h2>
+
+
+<p>
+    <a href="@Url.Action("Homepage", "Home")" class="btn btn-primary" role="button">返回</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fPdName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fPdImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fPdDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fBuyQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fPdPrice)
+        </th>
+        @*
+            <th>
+            @Html.DisplayNameFor(model => model.fUserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fUserPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fUserAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fUserPayway)
+            </th>
+        *@
+        <th></th>
+        <th></th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (User.Identity.GetUserId() == item.fUserId)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fPdName)
+                </td>
+                <td>
+                    <img src="~/Images/@item.fPdImage" height="50" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fPdDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fBuyQuantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fPdPrice)
+                </td>
+                <td></td>
+            </tr>
+        }
+
+    }
+    <tr>
+        <td></td>
+        <td></td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.ElementAt(0).fUserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.ElementAt(0).fUserPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.ElementAt(0).fUserAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.ElementAt(0).fUserPayway)
+        </td>
+
+    </tr>
+
+</table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

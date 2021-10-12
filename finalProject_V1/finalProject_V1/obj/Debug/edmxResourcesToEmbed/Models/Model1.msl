@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbProductsModelStoreContainer" CdmEntityContainer="cartsEntities">
+    <EntitySetMapping Name="tCart">
+      <EntityTypeMapping TypeName="dbProductsModel.tCart">
+        <MappingFragment StoreEntitySet="tCart">
+          <ScalarProperty Name="fId" ColumnName="fId" />
+          <ScalarProperty Name="fUserId" ColumnName="fUserId" />
+          <ScalarProperty Name="fPdName" ColumnName="fPdName" />
+          <ScalarProperty Name="fPdImage" ColumnName="fPdImage" />
+          <ScalarProperty Name="fPdPrice" ColumnName="fPdPrice" />
+          <ScalarProperty Name="fPdDescription" ColumnName="fPdDescription" />
+          <ScalarProperty Name="fBuyQuantity" ColumnName="fBuyQuantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tOrder">
+      <EntityTypeMapping TypeName="dbProductsModel.tOrder">
+        <MappingFragment StoreEntitySet="tOrder">
+          <ScalarProperty Name="fId" ColumnName="fId" />
+          <ScalarProperty Name="fUserId" ColumnName="fUserId" />
+          <ScalarProperty Name="fPdName" ColumnName="fPdName" />
+          <ScalarProperty Name="fPdImage" ColumnName="fPdImage" />
+          <ScalarProperty Name="fPdPrice" ColumnName="fPdPrice" />
+          <ScalarProperty Name="fPdDescription" ColumnName="fPdDescription" />
+          <ScalarProperty Name="fBuyQuantity" ColumnName="fBuyQuantity" />
+          <ScalarProperty Name="fUserName" ColumnName="fUserName" />
+          <ScalarProperty Name="fUserPhone" ColumnName="fUserPhone" />
+          <ScalarProperty Name="fUserAddress" ColumnName="fUserAddress" />
+          <ScalarProperty Name="fUserPayway" ColumnName="fUserPayway" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tProducts">
+      <EntityTypeMapping TypeName="dbProductsModel.tProducts">
+        <MappingFragment StoreEntitySet="tProducts">
+          <ScalarProperty Name="fId" ColumnName="fId" />
+          <ScalarProperty Name="fName" ColumnName="fName" />
+          <ScalarProperty Name="fImage" ColumnName="fImage" />
+          <ScalarProperty Name="fPrice" ColumnName="fPrice" />
+          <ScalarProperty Name="fDescription" ColumnName="fDescription" />
+          <ScalarProperty Name="fQuantity" ColumnName="fQuantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

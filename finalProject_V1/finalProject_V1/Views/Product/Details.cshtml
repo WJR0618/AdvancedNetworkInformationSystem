@@ -1,0 +1,58 @@
+﻿@model finalProject_V1.Models.tProducts
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Html.DisplayFor(model => model.fName)</h2>
+
+<div>
+    <h4>tProducts</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fImage)
+        </dt>
+
+        <dd>
+            <img src="~/Images/@Html.DisplayFor(model => model.fImage)" height="200" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fQuantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fQuantity)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Edit", "Home", new RouteValueDictionary(new { id = Model.fId }))" class="btn btn-primary" role="button">編輯</a>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-primary" role="button">返回</a>
+</p>

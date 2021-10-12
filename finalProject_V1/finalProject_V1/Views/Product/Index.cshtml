@@ -1,0 +1,75 @@
+﻿@model IEnumerable<finalProject_V1.Models.tProducts>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>商品清單</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fQuantity)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fName)
+            </td>
+            <td>
+                <img src="~/Images/@item.fImage" height="80" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fQuantity)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "Product", new RouteValueDictionary(new { id = item.fId }))" class="btn btn-primary" role="button">編輯</a>
+                <a href="@Url.Action("Details", "Product", new RouteValueDictionary(new { id = item.fId }))" class="btn btn-default" role="button">詳細資料</a>
+                <a href="@Url.Action("Delete", "Product", new RouteValueDictionary(new { id = item.fId }))" class="btn btn-danger" role="button" onclick="return confirm('確定刪除此商品?')">刪除</a>
+                @*
+                    @Html.ActionLink("Edit", "Edit", new { id = item.fId, @class="btn btn-primary", role="button" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.fId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.fId })
+                *@
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p>
+    <a href="@Url.Action("Create", "Product")" class="btn btn-primary" role="button">新增商品</a>
+</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

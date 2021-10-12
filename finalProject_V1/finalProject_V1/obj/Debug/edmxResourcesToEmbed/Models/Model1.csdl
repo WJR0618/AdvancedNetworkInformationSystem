@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbProductsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tCart">
+    <Key>
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="fId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fPdName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fPdImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fPdPrice" Type="Int32" Nullable="false" />
+    <Property Name="fPdDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="fBuyQuantity" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tOrder">
+    <Key>
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="fId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fPdName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fPdImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fPdPrice" Type="Int32" Nullable="false" />
+    <Property Name="fPdDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="fBuyQuantity" Type="Int32" Nullable="false" />
+    <Property Name="fUserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fUserPhone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fUserAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fUserPayway" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tProducts">
+    <Key>
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="fId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fPrice" Type="Int32" Nullable="false" />
+    <Property Name="fDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="fQuantity" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="cartsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tCart" EntityType="Self.tCart" />
+    <EntitySet Name="tOrder" EntityType="Self.tOrder" />
+    <EntitySet Name="tProducts" EntityType="Self.tProducts" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,117 @@
+﻿@model IEnumerable<finalProject_V1.Models.tCart>
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "ShowCarts";
+    Layout = "~/Views/Shared/_HomeLayoutPage.cshtml";
+}
+
+<h2>ShowCarts</h2>
+<table class="table">
+    <tr>
+        <th>商品名稱 </th><th>商品圖片</th><th>商品描述 </th><th>數量</th><th>金額</th> <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (User.Identity.GetUserId() == item.fUserId)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fPdName)
+                </td>
+                <td>
+                    <img src="~/Images/@item.fPdImage" height="50" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fPdDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fBuyQuantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fPdPrice)
+
+                </td>
+                <td>
+                    <a href="@Url.Action("DeleteCartItem", "Home", new RouteValueDictionary(new { id = item.fId }))" class="btn btn-danger" role="button" onclick="return confirm('確定移除此購物車商品?')">刪除</a>
+                </td>
+            </tr>
+        }
+    }
+    @{
+        var totalAmount = 0;
+        foreach (var item in Model)
+        {
+            if (User.Identity.GetUserId() == item.fUserId)
+            {
+                totalAmount += item.fPdPrice;
+            }
+        }
+    }
+
+    <tr>
+        <th>
+
+        </th>
+        <th>
+
+        </th>
+        <th>
+
+        </th>
+        <th>
+            總金額
+        </th>
+        <th>
+            @totalAmount
+        </th>
+
+        <th></th>
+    </tr>
+
+</table>
+
+@using (Html.BeginForm(Html.BeginForm("PayMoney", "Home", FormMethod.Post, new { enctype = "multipart/form-data" })))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <h4>收件人姓名</h4>
+        <div>
+            <input type="text" name="Name" class="form-control" required="required" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <h4>收件人電話</h4>
+        <div>
+            <input type="text" name="Phone" class="form-control" required="required" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <h4>收件人地址</h4>
+        <div>
+            <input type="text" name="Address" class="form-control" required="required" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <h4>付款方式</h4>
+        <div>
+            <select name="Payway" class="form-control" required="required">
+                <option value="取貨付款">取貨付款</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2">
+            <a href="@Url.Action("Homepage", "Home")" class="btn btn-primary" role="button">繼續選購</a>
+            <input type="submit" value="結帳" class="btn btn-danger" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

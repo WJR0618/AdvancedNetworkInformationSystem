@@ -1,0 +1,44 @@
+﻿
+@model IEnumerable<finalProject_V1.Models.tProducts>
+@using Microsoft.AspNet.Identity
+
+@{
+    Layout = "~/Views/Shared/_HomeLayoutPage.cshtml";
+    ViewBag.Title = "Homepage";
+}
+    <p>
+        &nbsp;
+    </p>
+
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="~/Images/@product.fImage" alt="商品圖片" height="300" />
+                <div class="caption">
+                    <h3>@product.fName</h3>
+                    <p>@product.fDescription</p>
+                    <p>售價 : @product.fPrice</p>
+                    <p>庫存 : @product.fQuantity</p>
+                    <p>
+                        @if (Request.IsAuthenticated)
+                        {
+                            <a href="@Url.Action("AddintoCart", "Home", new RouteValueDictionary(new { id = product.fId }))" class="btn btn-primary" role="button">購買</a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Login", "Account", routeValues: null)" class="btn btn-primary" role="button">購買</a>
+                        }
+
+                        <a href="@Url.Action("Details", "Home", new RouteValueDictionary(new { id = product.fId }))" class="btn btn-default" role="button">詳細資料</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
